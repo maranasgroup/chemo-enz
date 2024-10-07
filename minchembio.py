@@ -7,19 +7,19 @@ import numpy as np
 import time
 import streamlit as st
 
-@st.cache_data
+#@st.cache_data
 def load_metab_df():
     metab_df = pd.read_csv("./metanetx/data_final/metanetx_metab_db_noduplicates.csv" , index_col = "Unnamed: 0")
     return metab_df
     
-@st.cache_data
+#@st.cache_data
 def load_files():
     
-    all_sij = json.load(open("./all_sij_90.json"))
-    all_rij_NEW = json.load(open("./all_rij_90.json"))
-    rxn_classify = json.load(open("./../../rxn_classify.json"))
+    all_sij = json.load(open("./all_sij_with_miss_cat.json"))
+    all_rij_NEW = json.load(open("./all_rij_with_miss_cat.json"))
+    rxn_classify = json.load(open("./../rxn_classify_with_miss_cat.json"))
     #bio_rxns_front = json.load(open("./../updated_data/new_data/bio_rxns_front.json"))
-    rev_pair = json.load(open("./rev_pair_90.json"))
+    rev_pair = json.load(open("./rev_pair_90_nondup.json"))
     new_all_mol_ids = list(all_rij_NEW.keys())
     new_all_rxn_ids = list(all_sij.keys())
     bio_chem_smiles_ids_dict = json.load(open('./../../bio_chem_smiles_ids_dict_updated.json'))
@@ -89,6 +89,7 @@ def formulation(new_all_mol_ids,new_all_rxn_ids,all_rij_NEW,rxn_classify,exchang
     #lp_prob+=y_rxn['MNXR188567_rev']==0, "infeasible_DG"
     
     #lp_prob+=y_C['MNXM1103302']==0, "CMP"
+    #lp_prob+=y_C['MNXM26']==0, "acetate"
     
     
     '''
@@ -146,7 +147,7 @@ def formulation(new_all_mol_ids,new_all_rxn_ids,all_rij_NEW,rxn_classify,exchang
     lp_prob += y_rxn[exchange_rxns[1]]==1, "exchange_output"
     #lp_prob += y_rxn['MNXR153413']==1, "making mep"
     #lp_prob+= pulp.lpSum([y_rxn[j] for j in new_all_rxn_ids if rxn_classify[j]!=2]) >= 12 ,"minimum_steps"
-    lp_prob+= pulp.lpSum([y_rxn[j] for j in new_all_rxn_ids if rxn_classify[j]!=2]) <= 30, "maximum_steps"
+    lp_prob+= pulp.lpSum([y_rxn[j] for j in new_all_rxn_ids if rxn_classify[j]!=2]) <= 50, "maximum_steps"
     #lp_prob += pulp.lpSum([y_BC[ids]+y_CB[ids] for ids in new_all_mol_ids])==0, "transitions"
     itr = 0
     for num_transitions in range(tot_transitions):
@@ -254,34 +255,39 @@ def formulation(new_all_mol_ids,new_all_rxn_ids,all_rij_NEW,rxn_classify,exchang
 
 
 def main():
+    '''
     st.image('./../MinChemBio_header.png', use_column_width=True)
     st.subheader('Primary reactant & Primary product (Use MetaNetX IDs or My Chemsitry IDs)')
-    #reactant = st.text_input('reactant', value='MNXM23')
-    product = st.text_input(
-            'product', value='CHEM01229150')
-
+    reactant = st.text_input('reactant', value='MNXM23')
+    product = st.text_input('product', value='CHEM01229150')
+    "MNXM740825","MNXM1104965", "MNXM3685","MNXM2734"
+    '''
+    #MNXM740825
+    reactant = "MNXM740825"
+    product = "MNXM1104965"
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    soln_file = "./results/"+product+"_from_"+reactant+"_"+timestr+"_.txt"
     
-    
-    if st.button("Search"):
-        new_all_mol_ids, new_all_rxn_ids, rxn_classify, all_sij,all_rij_NEW,bio_chem_smiles_ids_dict,rev_pair = load_files()
-        exchange_mets = ["MNXM23","CHEM01229150"]
-        if product in all_rij_NEW:
-            new_all_rxn_ids,rxn_classify,all_rij_NEW,exchange_rxns = add_exchange(exchange_mets,bio_chem_smiles_ids_dict,new_all_rxn_ids,rxn_classify,all_rij_NEW)
-            st.write('Product is present in a reaction')
-            metab_df = load_metab_df()
-            metab_df_name = metab_df['Name'].to_dict()
-            cid_fda_dict = json.load(open('./../cid_fda_dict.json'))
-            # if session_state.button_search:
-            st.subheader('Calculating chemoenzymatic pathway')
-            st.write(reactant+" => "+ product)
-            soln_file = "./results/"+cid_fda_dict[product]+"_"+metab_df_name[reactant]+"_.txt"
-            tot_transitions = 100
-            formulation(new_all_mol_ids,new_all_rxn_ids,all_rij_NEW,rxn_classify,exchange_rxns,soln_file,tot_transitions,rev_pair)
-        else:
-            st.write("PRODUCT NOT IN ANY REACTION")
+    new_all_mol_ids, new_all_rxn_ids, rxn_classify, all_sij,all_rij_NEW,bio_chem_smiles_ids_dict,rev_pair = load_files()
+    exchange_mets = [reactant,product]
+    if product in all_rij_NEW:
+        new_all_rxn_ids,rxn_classify,all_rij_NEW,exchange_rxns = add_exchange(exchange_mets,bio_chem_smiles_ids_dict,new_all_rxn_ids,rxn_classify,all_rij_NEW)
+        #st.write('Product is present in a reaction')
+        #metab_df = load_metab_df()
+        #metab_df_name = metab_df['Name'].to_dict()
+        cid_fda_dict = json.load(open('./../cid_fda_dict.json'))
+        # if session_state.button_search:
+        #st.subheader('Calculating chemoenzymatic pathway')
+        #st.write(reactant+" => "+ product)
+        
+        tot_transitions = 100
+        formulation(new_all_mol_ids,new_all_rxn_ids,all_rij_NEW,rxn_classify,exchange_rxns,soln_file,tot_transitions,rev_pair)
+    else:
+        with open(soln_file,'a') as f:
+                f.write("PRODUCT NOT IN ANY REACTION")
             
 
-if __name__ == '__main__':
+if __name__ =="__main__":
     main()
 
 
