@@ -1,2 +1,2 @@
 The files associated with the MinChemBio are seperately attached here instead of directly uploading on the github.
-[Datasets](https://pennstateoffice365-my.sharepoint.com/:f:/g/personal/mxa6082_psu_edu/EtcSXKX8ix9Kg4TlXtWkh6kByRAZ5b3k6JtLuH-oUadEiw?e=sSfGTF)
+[Dataset and code on Scholarsphere](https://doi.org/10.26207/tbg0-gr88)
