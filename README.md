@@ -14,4 +14,8 @@ The files associated with the MinChemBio are seperately attached here, since the
 [Dataset and code on Scholarsphere](https://doi.org/10.26207/tbg0-gr88)
 
 
+# How to use minChemBio tool
 
+```python
+conda env create -f environment.yaml
+```
