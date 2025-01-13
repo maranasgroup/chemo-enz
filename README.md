@@ -24,4 +24,5 @@ conda env create -f environment.yaml
 - Use the ids to put into the streamlit web app by executing the file minchembio_streamlit.py
 - Now, you have the solutions given by minChemBio
 - To visualize these solutions, you have to use the another juptyer code, by inputing the folder of the pathways
+- S2.csv is the list of patent id of USPTO reactions with their reaction SMILES strings
 - 
