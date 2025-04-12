@@ -16,19 +16,7 @@ The files associated with the MinChemBio are seperately attached here, since the
 
 # How to use minChemBio tool
 
-```python
-conda env create -f environment.yaml
-```
-- Get the dataset ready (S1.txt)
-- Now get the ids of reactant and product using the jupyter code
-- Use the ids to put into the streamlit web app by executing the file minchembio_streamlit.py
-- Now, you have the solutions given by minChemBio
-- To visualize these solutions, you have to use the another juptyer code, by inputing the folder of the pathways
-- S2.csv is the list of patent id of USPTO reactions with their reaction SMILES strings
 
-Sure! Here's the updated section in Markdown syntax, ready to paste directly into your `README.md` file:
-
-```markdown
 ## Getting Started
 
 1. **Create the Conda environment**  
