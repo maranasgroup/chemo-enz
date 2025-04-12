@@ -45,4 +45,3 @@ The files associated with the MinChemBio are seperately attached here, since the
    The file `S2.csv` contains a list of USPTO patent IDs and their corresponding reaction SMILES strings. This can be used for further analysis or comparison.
 ```
 
-Let me know if you want me to add a **Project Overview**, **Installation**, or **License** section too!
