@@ -22,7 +22,7 @@ The files associated with the MinChemBio are seperately attached here, since the
 1. **Create the Conda environment**  
    Set up the environment with all required dependencies by running:
    ```bash
-   conda env create -f environment.yaml
+   conda env create -f minchembio_yml.yml
    ```
 
 2. **Prepare the dataset**  
