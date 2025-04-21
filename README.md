@@ -11,7 +11,7 @@
     
 
 The files associated with the MinChemBio are seperately attached here, since the github limits uploading files larger than 100 MB without LFS.
-[Dataset and code on Scholarsphere](https://doi.org/10.26207/tbg0-gr88)
+[Dataset and code on Scholarsphere]([https://doi.org/10.26207/tbg0-gr88](https://scholarsphere.psu.edu/resources/28575451-cb5a-47db-a9e9-d42c984b9ddc))
 
 
 # How to use minChemBio tool
