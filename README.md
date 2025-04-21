@@ -26,7 +26,7 @@ The files associated with the MinChemBio are seperately attached here, since the
    ```
 
 2. **Prepare the dataset**  
-   Ensure you have the dataset file named `S1.txt` in the working directory.
+   Ensure you have the dataset files in the working directly
 
 3. **Extract reactant and product IDs**  
    Open the provided Jupyter notebook and run it to extract the IDs of reactants and products from `S1.txt`.
@@ -34,20 +34,22 @@ The files associated with the MinChemBio are seperately attached here, since the
 4. **Run the Streamlit web app**  
    Launch the web app interface by executing the following command:
    ```bash
-   python minchembio_streamlit.py
+      streamlit run minchembio_streamlit.py
+   ```
+   OR
+
+    ```bash
+      python run minchembio.py
    ```
    Enter the reactant and product IDs in the app to generate solutions using **minChemBio**.
 
-5. **Visualize the solutions**  
+6. **Visualize the solutions**  
    Use the visualization Jupyter notebook to explore the generated pathways. Provide the folder containing the pathway outputs as input to the notebook.
 
-6. **Reference data (optional)**  
+7. **Reference data (optional)**  
    The file `S2.csv` contains a list of USPTO patent IDs and their corresponding reaction SMILES strings. This can be used for further analysis or comparison.
-```
 
-Absolutely! Here's a clean, markdown-formatted version you can paste directly into your GitHub README. It’s structured, consistent, and includes just the right level of detail:
 
----
 
 ## 📁 File List
 
