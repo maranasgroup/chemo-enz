@@ -45,3 +45,67 @@ The files associated with the MinChemBio are seperately attached here, since the
    The file `S2.csv` contains a list of USPTO patent IDs and their corresponding reaction SMILES strings. This can be used for further analysis or comparison.
 ```
 
+Absolutely! Here's a clean, markdown-formatted version you can paste directly into your GitHub README. It’s structured, consistent, and includes just the right level of detail:
+
+---
+
+## 📁 File List
+
+This repository contains the code and datasets required to run **minChemBio**, a tool for exploring pathways using mixed-integer linear programming (MILP).
+
+---
+
+### 📦 Data Files
+
+1. **`all_rij_with_miss_cat.json`**  
+   A dictionary where **molecule IDs** are the keys. Each value is a dictionary listing all reactions involving that molecule, either as a **reactant (-1)** or a **product (1)**.
+
+2. **`all_sij_with_miss_cat.json`**  
+   A dictionary where **reaction IDs** are the keys. Each value is a dictionary listing all molecules involved in the reaction as **reactants (-1)** or **products (1)**.
+
+3. **`bio_chem_smiles_ids_dict_updated.json`**  
+   A dictionary with **canonical SMILES strings** as keys and **molecule IDs** as values. Similar to earlier SMILES-ID mappings but includes fewer molecules.
+
+4. **`rev_pair_90_nondup.json`**  
+   A dictionary where **reaction IDs** are the keys. Each value is a list containing reverse mappings extracted from the same reaction. Used to ensure that **forward and reverse reactions do not co-occur** in the same pathway.
+
+5. **`rxn_classify_with_miss_cat.json`**  
+   A dictionary with **reaction IDs** as keys. The value for each key is:
+   - `1` for **chemical reactions**
+   - `0` for **biological reactions**
+
+6. **`S1.txt`**  
+   A text file containing **molecule IDs** and their corresponding **canonical SMILES strings**.
+
+7. **`S2.csv`**  
+   A CSV file containing **reaction IDs** from the USPTO dataset, along with their associated **patent number, year**, and **reaction SMILES string**.
+
+---
+
+### 🧩 Code Files
+
+8. **`minchembio_streamlit.py`**  
+   A Streamlit web app interface for **minChemBio**.  
+   - **Inputs**: Product and reactant molecule IDs  
+   - **Required files**:  
+     - `all_rij_with_miss_cat.json`  
+     - `all_sij_with_miss_cat.json`  
+     - `bio_chem_smiles_ids_dict_updated.json`  
+     - `rev_pair_90_nondup.json`  
+     - `rxn_classify_with_miss_cat.json`  
+   - **Output**: A text file named in the format  
+     `productID_from_reactionID-timestamp_.txt`  
+     This file contains all possible solutions (pathways), each being a list of **reaction IDs** derived from solving the MILP problem.
+
+9. **`minchembio.py`**  
+   A Python script version of the Streamlit app.  
+   - Same functionality as `minchembio_streamlit.py`  
+   - Users need to **edit the `main()` function** to input the desired molecule IDs.
+
+10. **`visualize.ipynb`**  
+   A Jupyter notebook for visualizing the output pathways.  
+   - **Inputs**: Same as `minchembio_streamlit.py` + the results file generated from MILP  
+   - **Output**: Visual representations of all identified pathways, saved as **.png** files.
+
+
+
