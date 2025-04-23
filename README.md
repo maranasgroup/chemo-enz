@@ -26,7 +26,7 @@ The files associated with the MinChemBio are seperately attached here, since the
    ```
 
 2. **Prepare the dataset**  
-   Ensure you have the dataset files in the working directly
+   Ensure you have the dataset files in the working directory
 
 3. **Extract reactant and product IDs**  
    Open the provided Jupyter notebook and run it to extract the IDs of reactants and products from `S1.txt`.
