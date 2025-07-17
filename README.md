@@ -51,13 +51,13 @@ The files associated with the MinChemBio are seperately attached here, since the
 
 
 
-## 📁 File List
+## File List
 
 This repository contains the code and datasets required to run **minChemBio**, a tool for exploring pathways using mixed-integer linear programming (MILP).
 
 ---
 
-### 📦 Data Files
+### Data Files
 
 1. **`all_rij_with_miss_cat.json`**  
    A dictionary where **molecule IDs** are the keys. Each value is a dictionary listing all reactions involving that molecule, either as a **reactant (-1)** or a **product (1)**.
@@ -88,9 +88,9 @@ This repository contains the code and datasets required to run **minChemBio**, a
 
 ---
 
-### 🧩 Code Files
+### Code Files
 
-8. **`minchembio_streamlit.py`**  
+9. **`minchembio_streamlit.py`**  
    A Streamlit web app interface for **minChemBio**.  
    - **Inputs**: Product and reactant molecule IDs  
    - **Required files**:  
@@ -103,12 +103,12 @@ This repository contains the code and datasets required to run **minChemBio**, a
      `productID_from_reactionID-timestamp_.txt`  
      This file contains all possible solutions (pathways), each being a list of **reaction IDs** derived from solving the MILP problem.
 
-9. **`minchembio.py`**  
+10. **`minchembio.py`**  
    A Python script version of the Streamlit app.  
    - Same functionality as `minchembio_streamlit.py`  
    - Users need to **edit the `main()` function** to input the desired molecule IDs.
 
-10. **`visualize.ipynb`**  
+11. **`visualize.ipynb`**  
    A Jupyter notebook for visualizing the output pathways.  
    - **Inputs**: Same as `minchembio_streamlit.py` + the results file generated from MILP  
    - **Output**: Visual representations of all identified pathways, saved as **.png** files.
