@@ -68,18 +68,22 @@ This repository contains the code and datasets required to run **minChemBio**, a
 3. **`bio_chem_smiles_ids_dict_updated.json`**  
    A dictionary with **canonical SMILES strings** as keys and **molecule IDs** as values. Similar to earlier SMILES-ID mappings but includes fewer molecules.
 
-4. **`rev_pair_90_nondup.json`**  
+4. **`metanetx_metab_db.json`** 
+   A dictionary where **MetaNetx molecule  IDs** are the keys. Each value is a dictionary listing _Name_, _Formula_, _Charge_, _Mass_, _InChI_ , _InchIKey_ , _SMILES_ , _Reference_ for each molecule.
+   This dataset is extracted from the [MetaNetX web platform](https://www.metanetx.org/mnxdoc/mnxref.html).
+
+5. **`rev_pair_90_nondup.json`**  
    A dictionary where **reaction IDs** are the keys. Each value is a list containing reverse mappings extracted from the same reaction. Used to ensure that **forward and reverse reactions do not co-occur** in the same pathway.
 
-5. **`rxn_classify_with_miss_cat.json`**  
+6. **`rxn_classify_with_miss_cat.json`**  
    A dictionary with **reaction IDs** as keys. The value for each key is:
    - `1` for **chemical reactions**
    - `0` for **biological reactions**
 
-6. **`S1.txt`**  
+7. **`S1.txt`**  
    A text file containing **molecule IDs** and their corresponding **canonical SMILES strings**.
 
-7. **`S2.csv`**  
+8. **`S2.csv`**  
    A CSV file containing **reaction IDs** from the USPTO dataset, along with their associated **patent number, year**, and **reaction SMILES string**.
 
 ---
