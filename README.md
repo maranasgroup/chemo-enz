@@ -65,32 +65,38 @@ This repository contains the code and datasets required to run **minChemBio**, a
 2. **`all_sij_with_miss_cat.json`**  
    A dictionary where **reaction IDs** are the keys. Each value is a dictionary listing all molecules involved in the reaction as **reactants (-1)** or **products (1)**.
 
-3. **`bio_chem_smiles_ids_dict_updated.json`**  
+3. **`bio_chem_smiles_ids_dict_NEW.json`**  
+   A dictionary with **canonical SMILES strings** as keys and **molecule IDs** as values.
+
+4. **`bio_chem_smiles_ids_dict_updated.json`**  
    A dictionary with **canonical SMILES strings** as keys and **molecule IDs** as values. Similar to earlier SMILES-ID mappings but includes fewer molecules.
 
-4. **`metanetx_metab_db.json`** 
+5. **`bio_chem_ids_dict_NEW.json`**  
+   A dictionary with **molecule IDs** as keys and **canonical SMILES strings** as values. Similar to earlier SMILES-ID mappings but includes fewer molecules.
+
+6. **`metanetx_metab_db.json`** 
    A dictionary where **MetaNetx molecule  IDs** are the keys. Each value is a dictionary listing _Name_, _Formula_, _Charge_, _Mass_, _InChI_ , _InchIKey_ , _SMILES_ , _Reference_ for each molecule.
    This dataset is extracted from the [MetaNetX web platform](https://www.metanetx.org/mnxdoc/mnxref.html).
 
-5. **`rev_pair_90_nondup.json`**  
+7. **`rev_pair_90_nondup.json`**  
    A dictionary where **reaction IDs** are the keys. Each value is a list containing reverse mappings extracted from the same reaction. Used to ensure that **forward and reverse reactions do not co-occur** in the same pathway.
 
-6. **`rxn_classify_with_miss_cat.json`**  
+8. **`rxn_classify_with_miss_cat.json`**  
    A dictionary with **reaction IDs** as keys. The value for each key is:
    - `1` for **chemical reactions**
    - `0` for **biological reactions**
 
-7. **`S1.txt`**  
+9. **`S1.txt`**  
    A text file containing **molecule IDs** and their corresponding **canonical SMILES strings**.
 
-8. **`S2.csv`**  
+10. **`S2.csv`**  
    A CSV file containing **reaction IDs** from the USPTO dataset, along with their associated **patent number, year**, and **reaction SMILES string**.
 
 ---
 
 ### Code Files
 
-9. **`minchembio_streamlit.py`**  
+11. **`minchembio_streamlit.py`**  
    A Streamlit web app interface for **minChemBio**.  
    - **Inputs**: Product and reactant molecule IDs  
    - **Required files**:  
@@ -103,12 +109,12 @@ This repository contains the code and datasets required to run **minChemBio**, a
      `productID_from_reactionID-timestamp_.txt`  
      This file contains all possible solutions (pathways), each being a list of **reaction IDs** derived from solving the MILP problem.
 
-10. **`minchembio.py`**  
+12. **`minchembio.py`**  
    A Python script version of the Streamlit app.  
    - Same functionality as `minchembio_streamlit.py`  
    - Users need to **edit the `main()` function** to input the desired molecule IDs.
 
-11. **`visualize.ipynb`**  
+13. **`visualize.ipynb`**  
    A Jupyter notebook for visualizing the output pathways.  
    - **Inputs**: Same as `minchembio_streamlit.py` + the results file generated from MILP  
    - **Output**: Visual representations of all identified pathways, saved as **.png** files.
