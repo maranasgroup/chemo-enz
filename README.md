@@ -1,13 +1,14 @@
 ### Requirements: 
 
-1. Rdkit
-2. Streamlit
-3. Pandas
-4. Numpy
-5. Keras
-6. matplotlib
-7. Pulp
-8. CPLEX solver
+1. Python = 3.11
+2. Rdkit
+3. Streamlit
+4. Pandas
+5. Numpy
+6. NetworkX
+7. matplotlib
+8. Pulp
+9. CPLEX solver
     
 
 ### The files associated with the MinChemBio are seperately attached here, since the github limits uploading files larger than 100 MB without LFS.
